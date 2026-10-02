@@ -591,7 +591,8 @@ export default function BraceletsPage() {
               className="text-xs tracking-widest uppercase text-[#243247] mb-4 opacity-50"
               style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.25em' }}
             >
-              Collection
+              ORZI - Heritage Bracelets<br/>
+              Drop #01
             </p>
             <h2
               className="text-4xl md:text-5xl font-bold text-[#243247]"
