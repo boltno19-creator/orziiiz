@@ -44,49 +44,233 @@ fbq('track', 'PageView');
         padding: 0 24px;
       }
 
-      header {
-        background: rgba(36, 50, 71, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 20px 0;
-        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
+      .action-circles-header {
+        padding: 24px 0 8px;
       }
 
-      .header-content {
+      .action-circles-row {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+      }
+
+      .action-circle {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-      }
-
-      .logo {
-        font-family: 'Cinzel', serif;
-        font-size: 24px;
-        font-weight: 700;
-        color: #e7ddcc;
-        letter-spacing: 0.1em;
-      }
-
-      .back-button {
+        gap: 8px;
         background: transparent;
-        border: 1px solid #e7ddcc;
-        color: #e7ddcc;
-        padding: 10px 24px;
-        font-family: 'Amiri', serif;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.05em;
+        border: none;
         cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
+        padding: 4px;
       }
 
-      .back-button:hover {
-        background: #e7ddcc;
+      .action-circle__btn {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #243247;
+        border: 1.5px solid #e7ddcc;
+        box-shadow: 0 2px 12px rgba(36, 50, 71, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .action-circle:hover .action-circle__btn {
+        transform: scale(1.05);
+        box-shadow: 0 0 16px rgba(231, 221, 204, 0.25), 0 0 32px rgba(36, 50, 71, 0.08);
+      }
+
+      .action-circle__btn svg {
+        width: 20px;
+        height: 20px;
+        stroke: #e7ddcc;
+        opacity: 0.9;
+        transition: transform 0.3s ease;
+      }
+
+      .action-circle:hover .action-circle__btn svg {
+        transform: scale(1.1);
+      }
+
+      .action-circle__label {
+        font-family: 'Amiri', serif;
+        font-size: 0.7rem;
+        font-weight: 600;
         color: #243247;
-        transform: translateY(-2px);
+        opacity: 0.6;
+        letter-spacing: 0.03em;
+        transition: opacity 0.3s ease;
+      }
+
+      .action-circle:hover .action-circle__label {
+        opacity: 1;
+      }
+
+      /* ---------- Story Modal ---------- */
+      .story-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 10001;
+        align-items: center;
+        justify-content: center;
+        background: rgba(10, 14, 20, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .story-overlay.active {
+        display: flex;
+      }
+
+      .story-container {
+        position: relative;
+        height: 100vh;
+        max-height: 900px;
+        aspect-ratio: 9/16;
+        max-width: 100vw;
+      }
+
+      .story-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .story-gradient-top {
+        position: absolute;
+        inset-inline: 0;
+        top: 0;
+        height: 128px;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+      }
+
+      .story-gradient-bottom {
+        position: absolute;
+        inset-inline: 0;
+        bottom: 0;
+        height: 96px;
+        background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      }
+
+      .story-progress-row {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 12px;
+        display: flex;
+        gap: 4px;
+        z-index: 30;
+      }
+
+      .story-progress-bar {
+        flex: 1;
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.3);
+        overflow: hidden;
+      }
+
+      .story-progress-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.95);
+        width: 0%;
+      }
+
+      .story-header {
+        position: absolute;
+        top: 24px;
+        left: 0;
+        right: 0;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 25;
+      }
+
+      .story-title {
+        font-family: 'Amiri', serif;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+      }
+
+      .story-close {
+        background: rgba(0,0,0,0.3);
+        border: none;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .story-close:hover {
+        transform: scale(1.1);
+      }
+
+      .story-close svg {
+        width: 20px;
+        height: 20px;
+        stroke: #fff;
+      }
+
+      .story-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.25);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 20;
+      }
+
+      .story-nav svg {
+        width: 28px;
+        height: 28px;
+        stroke: #fff;
+      }
+
+      .story-nav--prev { left: 8px; }
+      .story-nav--next { right: 8px; }
+
+      .story-counter {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Cinzel', serif;
+        color: rgba(255,255,255,0.6);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        z-index: 20;
+      }
+
+      @media (max-width: 768px) {
+        .action-circles-row {
+          gap: 24px;
+        }
+        .story-nav { display: none; }
       }
 
       .hero-section {
@@ -642,9 +826,8 @@ fbq('track', 'PageView');
           font-size: 18px;
         }
 
-        .header-content {
-          flex-direction: column;
-          gap: 16px;
+        .action-circles-row {
+          gap: 24px;
         }
 
         .trust-grid {
@@ -788,11 +971,33 @@ fbq('track', 'PageView');
       <img height="1" width="1" style="display:none"
            src="https://www.facebook.com/tr?id=2204816053376578&ev=PageView&noscript=1"/>
     </noscript>
-    <header>
+    <header class="action-circles-header">
       <div class="container">
-        <div class="header-content">
-          <h1 class="logo">ORZI 1998</h1>
-          <a href="/" class="back-button">العودة للموقع ←</a>
+        <div class="action-circles-row">
+          <button class="action-circle" onclick="window.location.href='/'">
+            <span class="action-circle__btn">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </span>
+            <span class="action-circle__label">أُورزي ١٩٩٨</span>
+          </button>
+          <button class="action-circle" onclick="openStoryModal()">
+            <span class="action-circle__btn">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            </span>
+            <span class="action-circle__label">آراء</span>
+          </button>
+          <button class="action-circle" onclick="window.location.href='/bracelets.html'">
+            <span class="action-circle__btn">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+              </svg>
+            </span>
+            <span class="action-circle__label">منتجات حالية</span>
+          </button>
         </div>
       </div>
     </header>
@@ -1502,6 +1707,155 @@ fbq('track', 'PageView');
         if (e.key === CART_KEY) {
           renderCart();
         }
+      });
+    </script>
+
+    <!-- Story Modal -->
+    <div id="storyOverlay" class="story-overlay">
+      <div class="story-container" id="storyContainer">
+        <img id="storyImg" class="story-img" src="" alt="آراء" />
+        <div class="story-gradient-top"></div>
+        <div class="story-gradient-bottom"></div>
+        <div class="story-progress-row" id="storyProgress"></div>
+        <div class="story-header">
+          <span class="story-title">آراء</span>
+          <button class="story-close" onclick="closeStoryModal()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <button class="story-nav story-nav--prev" onclick="storyPrev(event)">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="story-nav story-nav--next" onclick="storyNext(event)">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        <div class="story-counter" id="storyCounter"></div>
+      </div>
+    </div>
+
+    <script>
+      var storyImages = ['/rev1.jpg','/rev2.jpg','/rev3.jpg','/rev4.jpg','/rev5.jpg','/rev6.jpg','/rev7.jpg','/rev8.jpg','/rev9.jpg','/rev10.jpg','/rev11.jpg','/rev12.jpg'];
+      var storySlide = 0;
+      var storyProgress = 0;
+      var storyRafId = null;
+      var storyLastTick = 0;
+      var storyPaused = false;
+      var STORY_DURATION = 6000;
+      var storyOverlay = document.getElementById('storyOverlay');
+      var storyImg = document.getElementById('storyImg');
+      var storyProgressEl = document.getElementById('storyProgress');
+      var storyCounter = document.getElementById('storyCounter');
+      var storyContainer = document.getElementById('storyContainer');
+
+      function buildStoryProgressBars() {
+        var html = '';
+        for (var i = 0; i < storyImages.length; i++) {
+          html += '<div class="story-progress-bar"><div class="story-progress-fill" id="storyFill' + i + '"></div></div>';
+        }
+        storyProgressEl.innerHTML = html;
+      }
+
+      function updateStoryProgressBars() {
+        for (var i = 0; i < storyImages.length; i++) {
+          var fill = document.getElementById('storyFill' + i);
+          if (!fill) continue;
+          if (i < storySlide) fill.style.width = '100%';
+          else if (i === storySlide) fill.style.width = storyProgress + '%';
+          else fill.style.width = '0%';
+        }
+      }
+
+      function storyTick(now) {
+        if (storyPaused) { storyLastTick = now; storyRafId = requestAnimationFrame(storyTick); return; }
+        var elapsed = now - storyLastTick;
+        storyLastTick = now;
+        storyProgress += (elapsed / STORY_DURATION) * 100;
+        if (storyProgress >= 100) {
+          storyNextInternal();
+          return;
+        }
+        updateStoryProgressBars();
+        storyRafId = requestAnimationFrame(storyTick);
+      }
+
+      function startStoryTimer() {
+        cancelAnimationFrame(storyRafId);
+        storyProgress = 0;
+        storyLastTick = performance.now();
+        storyRafId = requestAnimationFrame(storyTick);
+      }
+
+      function showStorySlide() {
+        storyImg.src = storyImages[storySlide];
+        storyCounter.textContent = (storySlide + 1) + ' / ' + storyImages.length;
+        updateStoryProgressBars();
+      }
+
+      function storyNextInternal() {
+        if (storySlide + 1 < storyImages.length) {
+          storySlide++;
+          showStorySlide();
+          startStoryTimer();
+        } else {
+          closeStoryModal();
+        }
+      }
+
+      function storyNext(e) {
+        if (e) e.stopPropagation();
+        if (storySlide + 1 < storyImages.length) {
+          storySlide++;
+          showStorySlide();
+          startStoryTimer();
+        } else {
+          closeStoryModal();
+        }
+      }
+
+      function storyPrev(e) {
+        if (e) e.stopPropagation();
+        if (storySlide > 0) {
+          storySlide--;
+          showStorySlide();
+          startStoryTimer();
+        }
+      }
+
+      function openStoryModal() {
+        storySlide = 0;
+        storyProgress = 0;
+        buildStoryProgressBars();
+        showStorySlide();
+        storyOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        startStoryTimer();
+      }
+
+      function closeStoryModal() {
+        cancelAnimationFrame(storyRafId);
+        storyOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      storyOverlay.addEventListener('click', function(e) {
+        if (e.target === storyOverlay) closeStoryModal();
+      });
+
+      storyContainer.addEventListener('mousedown', function() { storyPaused = true; });
+      storyContainer.addEventListener('mouseup', function() { storyPaused = false; storyLastTick = performance.now(); });
+      storyContainer.addEventListener('mouseleave', function() { storyPaused = false; storyLastTick = performance.now(); });
+
+      document.addEventListener('keydown', function(e) {
+        if (!storyOverlay.classList.contains('active')) return;
+        if (e.key === 'Escape') closeStoryModal();
+        if (e.key === 'ArrowRight') storyNext();
+        if (e.key === 'ArrowLeft') storyPrev();
       });
     </script>
 

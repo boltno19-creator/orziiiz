@@ -12,6 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         bracelets: resolve(__dirname, 'bracelets.html'),
+        orderBracelets: resolve(__dirname, 'order-bracelets.html'),
       },
     },
   },

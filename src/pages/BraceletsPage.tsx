@@ -554,17 +554,17 @@ export default function BraceletsPage() {
 
   return (
     <div
-      className="min-h-screen bg-white"
-      style={{ fontFamily: "'Amiri', serif" }}
+      className="min-h-screen"
+      style={{
+        fontFamily: "'Amiri', serif",
+        background: 'rgba(240, 235, 224, 0.85)',
+      }}
       dir="rtl"
     >
       {/* MINIMAL NAV HEADER */}
       <header
-        className="sticky top-0 z-50"
         style={{
           background: 'rgba(240, 235, 224, 0.85)',
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
           borderBottom: '1px solid rgba(36, 50, 71, 0.08)',
         }}
       >
@@ -584,7 +584,7 @@ export default function BraceletsPage() {
       </header>
 
       {/* COLLECTION SHOWCASE */}
-      <section ref={collectionRef} className="py-16 md:py-24 bg-white">
+      <section ref={collectionRef} className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-20">
             <p
@@ -616,7 +616,7 @@ export default function BraceletsPage() {
       </section>
 
       {/* STORY SECTION */}
-      <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <section className="py-24 md:py-32 relative overflow-hidden">
         <div
           className="absolute inset-0"
           style={{
@@ -655,7 +655,7 @@ export default function BraceletsPage() {
       </section>
 
       {/* BENEFITS */}
-      <section className="py-24 md:py-32" style={{ background: 'rgba(36, 50, 71, 0.04)' }}>
+      <section className="py-24 md:py-32" style={{ background: 'rgba(36, 50, 71, 0.03)' }}>
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <p
@@ -724,24 +724,6 @@ export default function BraceletsPage() {
       {/* FOOTER */}
       <footer className="bg-[#243247] text-white py-12 md:py-16 border-t border-[#e7ddcc] border-opacity-10">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <p
-              className="text-[#e7ddcc] opacity-55 mb-6 text-lg"
-              style={{ fontFamily: "'Amiri', serif" }}
-            >
-              لا تؤجل لحظة الأناقة — قطعتك في انتظارك
-            </p>
-            <a
-              href="/order-bracelets.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-3 bg-[#e7ddcc] text-[#243247] font-semibold transition-all duration-300 hover:bg-white hover:-translate-y-0.5 hover:shadow-lg"
-              style={{ fontFamily: "'amiri', serif", letterSpacing: '0.1em', fontSize: '0.85rem', textDecoration: 'none' }}
-            >
-              أُطلب الآن
-            </a>
-          </div>
-
           <div className="text-center mb-10">
             <h4 className="text-lg font-bold mb-4" style={{ fontFamily: "'Amiri', serif" }}>
               تواصل معنا

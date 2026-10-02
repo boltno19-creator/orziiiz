@@ -1,4 +1,4 @@
-import { Star, Info, Clock, Sparkles, Crown, Diamond } from 'lucide-react';
+import { Star, Info, Clock, Sparkles, Crown, Diamond, Watch, Scissors } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export interface HighlightItem {
@@ -32,9 +32,19 @@ const iconMap: Record<HighlightItem['icon'], LucideIcon> = {
 };
 
 const floatingIcons = [
-  { Icon: Crown, top: '25%', left: '12%', size: 14, delay: 0 },
-  { Icon: Diamond, top: '65%', right: '15%', size: 12, delay: 2 },
-  { Icon: Star, top: '35%', left: '85%', size: 13, delay: 3.5 },
+  // Left flank
+  { Icon: Crown, top: '15%', left: '6%', size: 18, delay: 0 },
+  { Icon: Diamond, top: '38%', left: '3%', size: 14, delay: 1.8 },
+  { Icon: Sparkles, top: '62%', left: '8%', size: 12, delay: 3.2 },
+  { Icon: Star, top: '82%', left: '5%', size: 16, delay: 4.5 },
+  // Right flank
+  { Icon: Diamond, top: '12%', right: '5%', size: 16, delay: 0.8 },
+  { Icon: Crown, top: '48%', right: '3%', size: 13, delay: 2.5 },
+  { Icon: Star, top: '72%', right: '7%', size: 15, delay: 4 },
+  // Background gaps
+  { Icon: Watch, top: '28%', left: '42%', size: 11, delay: 1.2 },
+  { Icon: Scissors, top: '55%', right: '40%', size: 10, delay: 3.8 },
+  { Icon: Sparkles, top: '88%', left: '48%', size: 12, delay: 5.2 },
 ];
 
 interface HighlightsSectionProps {
@@ -127,7 +137,7 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
               top,
               left,
               right,
-              opacity: 0.05,
+              opacity: 0.04,
               animation: `floatIcon 7s ease-in-out infinite`,
               animationDelay: `${delay}s`,
             }}
