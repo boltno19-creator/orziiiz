@@ -33,18 +33,14 @@ const iconMap: Record<HighlightItem['icon'], LucideIcon> = {
 
 const floatingIcons = [
   // Left flank
-  { Icon: Crown, top: '15%', left: '6%', size: 18, delay: 0 },
-  { Icon: Diamond, top: '38%', left: '3%', size: 14, delay: 1.8 },
-  { Icon: Sparkles, top: '62%', left: '8%', size: 12, delay: 3.2 },
-  { Icon: Star, top: '82%', left: '5%', size: 16, delay: 4.5 },
+  { Icon: Crown, top: '18%', left: '5%', size: 16, delay: 0 },
+  { Icon: Sparkles, top: '55%', left: '4%', size: 12, delay: 2.5 },
+  { Icon: Star, top: '80%', left: '7%', size: 14, delay: 4.5 },
   // Right flank
-  { Icon: Diamond, top: '12%', right: '5%', size: 16, delay: 0.8 },
-  { Icon: Crown, top: '48%', right: '3%', size: 13, delay: 2.5 },
-  { Icon: Star, top: '72%', right: '7%', size: 15, delay: 4 },
-  // Background gaps
-  { Icon: Watch, top: '28%', left: '42%', size: 11, delay: 1.2 },
-  { Icon: Scissors, top: '55%', right: '40%', size: 10, delay: 3.8 },
-  { Icon: Sparkles, top: '88%', left: '48%', size: 12, delay: 5.2 },
+  { Icon: Diamond, top: '22%', right: '4%', size: 14, delay: 1.2 },
+  { Icon: Crown, top: '65%', right: '6%', size: 13, delay: 3.5 },
+  // Background gap
+  { Icon: Watch, top: '42%', left: '45%', size: 11, delay: 2 },
 ];
 
 interface HighlightsSectionProps {

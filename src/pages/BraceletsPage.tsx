@@ -529,29 +529,6 @@ export default function BraceletsPage() {
     });
   }, []);
 
-  const benefits = [
-    {
-      title: 'أناقة خالدة',
-      titleEn: 'Timeless Elegance',
-      desc: 'تصاميم لا تخضع لقواعد الموضة، بل تتجاوزها',
-    },
-    {
-      title: 'خامات فاخرة',
-      titleEn: 'Premium Materials',
-      desc: 'نحاس مطلي بعناية، مقاوم لتغير اللون مع الزمن',
-    },
-    {
-      title: 'حضور واثق',
-      titleEn: 'Confident Presence',
-      desc: 'قطعة تُضاف إلى أسلوبك دون ضجيج، بثقة كاملة',
-    },
-    {
-      title: 'مصممة للجنسين',
-      titleEn: 'For Him & Her',
-      desc: 'تناسب كل معصم بفضل تصميمها القابل للتعديل',
-    },
-  ];
-
   return (
     <div
       className="min-h-screen"
@@ -562,14 +539,8 @@ export default function BraceletsPage() {
       dir="rtl"
     >
       {/* MINIMAL NAV HEADER */}
-      <header
-        style={{
-          background: 'rgba(240, 235, 224, 0.85)',
-          borderBottom: '1px solid rgba(36, 50, 71, 0.08)',
-        }}
-      >
-        <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
-          {/* RTL: Home on the right, Reviews on the left */}
+      <header>
+        <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-center gap-12">
           <HeaderCircle
             icon={Home}
             label="أُورزي ١٩٩٨"
@@ -650,73 +621,6 @@ export default function BraceletsPage() {
             <p>
               نحاس مصقول، طلاء مدروس، ومقاس قابل للتعديل — لأن كل معصم يستحق ما يناسبه تماماً.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* BENEFITS */}
-      <section className="py-24 md:py-32" style={{ background: 'rgba(36, 50, 71, 0.03)' }}>
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-16">
-            <p
-              className="text-xs tracking-widest uppercase text-[#243247] mb-4 opacity-50"
-              style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.25em' }}
-            >
-              Why ORZI
-            </p>
-            <h2
-              className="text-3xl md:text-4xl font-bold text-[#243247]"
-              style={{ fontFamily: "'amiri', serif" }}
-            >
-              ما يجعل ORZI مختلفة
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((b, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 text-center group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="w-8 h-px bg-[#243247] opacity-20 mx-auto mb-6 group-hover:opacity-40 transition-opacity" />
-                <p
-                  className="text-xs tracking-widest uppercase text-[#243247] opacity-40 mb-3"
-                  style={{ fontFamily: "'Cinzel', serif", letterSpacing: '0.2em' }}
-                >
-                  {b.titleEn}
-                </p>
-                <h3
-                  className="text-lg font-bold text-[#243247] mb-4"
-                  style={{ fontFamily: "'Amiri', serif" }}
-                >
-                  {b.title}
-                </h3>
-                <p
-                  className="text-sm text-[#243247] opacity-55 leading-loose"
-                  style={{ fontFamily: "'Amiri', serif" }}
-                >
-                  {b.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-16">
-            <p
-              className="text-[#243247] opacity-50 mb-6 text-base"
-              style={{ fontFamily: "'Amiri', serif" }}
-            >
-              اختر قطعتك وانضم إلى من يحملون الأصالة
-            </p>
-            <a
-              href="/order-bracelets.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-3 border border-[#243247] text-[#243247] font-semibold transition-all duration-300 hover:bg-[#243247] hover:text-[#e7ddcc] hover:-translate-y-0.5"
-              style={{ fontFamily: "'amiri', serif", letterSpacing: '0.1em', fontSize: '0.85rem', textDecoration: 'none' }}
-            >
-              أُطلب الآن
-            </a>
           </div>
         </div>
       </section>
