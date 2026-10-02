@@ -62,15 +62,13 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
       <button
         key={h.id}
         onClick={() => handleClick(h)}
-        className="flex flex-col items-center gap-4 group flex-shrink-0"
+        className="flex flex-col items-center gap-2 md:gap-3 group flex-shrink-0"
         style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
       >
-        <div className="p-2">
+        <div className="p-1.5 md:p-2">
           <div
-            className="relative rounded-full transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+            className="relative rounded-full transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl w-[100px] h-[100px] md:w-[130px] md:h-[130px] lg:w-[144px] lg:h-[144px]"
             style={{
-              width: '130px',
-              height: '130px',
               padding: '4px',
               background: '#243247',
               border: '2px solid #e7ddcc',
@@ -85,8 +83,8 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
               }}
             >
               <Icon
-                size={38}
-                className="transition-transform duration-300 group-hover:scale-110"
+                size={32}
+                className="md:!w-[38px] md:!h-[38px] transition-transform duration-300 group-hover:scale-110"
                 style={{ color: '#e7ddcc', opacity: 0.9 }}
               />
             </div>
@@ -101,7 +99,7 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
         </div>
 
         <span
-          className="text-sm md:text-base font-semibold transition-all duration-300 group-hover:opacity-100"
+          className="text-xs md:text-sm lg:text-base font-semibold transition-all duration-300 group-hover:opacity-100 text-center whitespace-nowrap"
           style={{
             fontFamily: "'Amiri', serif",
             color: '#243247',
@@ -117,7 +115,7 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
 
   return (
     <section
-      className="relative pt-32 md:pt-48 pb-28 md:pb-40"
+      className="relative py-12 md:py-32"
       style={{
         background:
           'linear-gradient(180deg, #e7ddcc 0%, #f0ebe0 25%, #f5f0e8 55%, #f0ebe0 85%, #e7ddcc 100%)',
@@ -144,16 +142,23 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        <div
-          className="flex items-start justify-between py-8 gap-6 md:gap-12"
-        >
+        {/* Desktop: circles split to left/right ends */}
+        <div className="hidden md:flex items-start justify-between py-8 gap-8 lg:gap-12">
           {/* Right side (RTL): 3 story circles */}
-          <div className="flex gap-6 md:gap-12 items-start py-2">
+          <div className="flex gap-8 lg:gap-12 items-start py-2">
             {storyHighlights.map(renderCircle)}
           </div>
 
           {/* Left side (RTL): product circle */}
           <div className="flex items-start py-2">
+            {renderCircle(productHighlight)}
+          </div>
+        </div>
+
+        {/* Mobile: horizontally scrollable story bar */}
+        <div className="md:hidden overflow-x-auto scrollbar-hide -mx-4 px-4">
+          <div className="flex items-start justify-start gap-4 py-2 w-max">
+            {storyHighlights.map(renderCircle)}
             {renderCircle(productHighlight)}
           </div>
         </div>
