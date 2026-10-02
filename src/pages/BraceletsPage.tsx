@@ -539,7 +539,7 @@ export default function BraceletsPage() {
       dir="rtl"
     >
       {/* MINIMAL NAV HEADER */}
-      <header>
+      <header style={{ paddingTop: '3rem' }}>
         <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-center gap-12">
           <HeaderCircle
             icon={Home}

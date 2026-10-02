@@ -50,7 +50,7 @@ interface HighlightsSectionProps {
 export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProps) {
   const handleClick = (h: HighlightItem) => {
     if (h.action === 'link' && h.link) {
-      window.location.href = h.link;
+      window.open(h.link, '_blank', 'noopener,noreferrer');
     } else if (h.action === 'modal' && h.storyId) {
       onStoryOpen(h.storyId);
     }
