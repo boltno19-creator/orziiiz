@@ -73,6 +73,7 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
               background: '#243247',
               border: '2px solid #e7ddcc',
               boxShadow: '0 6px 24px rgba(36, 50, 71, 0.18)',
+              animation: 'shimmerGlow 4s ease-in-out infinite',
             }}
           >
             <div
@@ -141,9 +142,16 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
         ))}
       </div>
 
+      {/* Top geometric divider */}
+      <div className="relative z-10 flex items-center justify-center gap-3 mb-8 md:mb-12 opacity-30">
+        <div className="w-12 h-px bg-[#243247]" />
+        <div className="w-1.5 h-1.5 rotate-45 border border-[#243247]" />
+        <div className="w-12 h-px bg-[#243247]" />
+      </div>
+
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         {/* Desktop: circles split to left/right ends */}
-        <div className="hidden md:flex items-start justify-between py-8 gap-8 lg:gap-12">
+        <div className="hidden md:flex items-start justify-between py-8 gap-8 lg:gap-12 animate-luxury-fade-up">
           {/* Right side (RTL): 3 story circles */}
           <div className="flex gap-8 lg:gap-12 items-start py-2">
             {storyHighlights.map(renderCircle)}
@@ -155,13 +163,18 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
           </div>
         </div>
 
-        {/* Mobile: horizontally scrollable story bar */}
-        <div className="md:hidden overflow-x-auto scrollbar-hide -mx-4 px-4">
-          <div className="flex items-start justify-start gap-4 py-2 w-max">
-            {storyHighlights.map(renderCircle)}
-            {renderCircle(productHighlight)}
-          </div>
+        {/* Mobile/Tablet: circles stacked vertically */}
+        <div className="md:hidden flex flex-col items-center w-full gap-6 py-4 animate-luxury-fade-up">
+          {storyHighlights.map(renderCircle)}
+          {renderCircle(productHighlight)}
         </div>
+      </div>
+
+      {/* Bottom geometric divider */}
+      <div className="relative z-10 flex items-center justify-center gap-3 mt-8 md:mt-12 opacity-30">
+        <div className="w-12 h-px bg-[#243247]" />
+        <div className="w-1.5 h-1.5 rotate-45 border border-[#243247]" />
+        <div className="w-12 h-px bg-[#243247]" />
       </div>
     </section>
   );

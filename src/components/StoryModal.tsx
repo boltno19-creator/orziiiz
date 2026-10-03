@@ -164,13 +164,27 @@ export default function StoryModal({
     if (!touchStart) return;
     const dx = e.changedTouches[0].clientX - touchStart.x;
     const dy = e.changedTouches[0].clientY - touchStart.y;
-    setDragOffset(0);
 
-    if (Math.abs(dy) > 80 && Math.abs(dy) > Math.abs(dx)) {
-      onClose();
+    if (Math.abs(dy) > 100 && Math.abs(dy) > Math.abs(dx)) {
+      if (dy > 0) {
+        setDragOffset(window.innerHeight);
+        setTimeout(() => {
+          setDragOffset(0);
+          onClose();
+        }, 300);
+      } else {
+        setDragOffset(0);
+        onClose();
+      }
+      setTouchStart(null);
       return;
     }
-    if (Math.abs(dx) < 30) return;
+
+    setDragOffset(0);
+    if (Math.abs(dx) < 30) {
+      setTouchStart(null);
+      return;
+    }
     if (dx < 0) {
       handleNext();
     } else {
@@ -214,7 +228,7 @@ export default function StoryModal({
           maxWidth: '100vw',
           transform: `translateY(${dragOffset}px)`,
           opacity: 1 - Math.min(Math.abs(dragOffset) / 400, 0.5),
-          transition: dragOffset === 0 ? 'transform 0.3s ease, opacity 0.3s ease' : 'none',
+          transition: 'transform 0.3s ease, opacity 0.3s ease',
         }}
         onClick={(e) => e.stopPropagation()}
         onMouseDown={handleMouseDown}

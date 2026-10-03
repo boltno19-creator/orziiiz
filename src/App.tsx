@@ -55,7 +55,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white" dir="ltr">
+    <div className="min-h-screen bg-[#e7ddcc]" dir="ltr">
       <main>
         <Hero />
 
