@@ -26,7 +26,7 @@ const storyGroups: StoryGroup[] = [
   },
   {
     id: 'info',
-    title: 'أُورزي ١٩٩٨',
+    title: 'معلومات عنا',
     slides: [
       { image: '/orziinfo.jpg' },
     ],
