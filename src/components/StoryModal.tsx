@@ -33,6 +33,7 @@ export default function StoryModal({
   const [isPaused, setIsPaused] = useState(false);
   const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
   const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
   const rafRef = useRef<number>(0);
@@ -155,6 +156,7 @@ export default function StoryModal({
     if (!touchStart) return;
     const dy = e.touches[0].clientY - touchStart.y;
     if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(e.touches[0].clientX - touchStart.x)) {
+      if (!isDragging) setIsDragging(true);
       setDragOffset(dy);
     }
   };
@@ -167,12 +169,14 @@ export default function StoryModal({
 
     if (Math.abs(dy) > 100 && Math.abs(dy) > Math.abs(dx)) {
       if (dy > 0) {
+        setIsDragging(false);
         setDragOffset(window.innerHeight);
         setTimeout(() => {
           setDragOffset(0);
           onClose();
-        }, 300);
+        }, 350);
       } else {
+        setIsDragging(false);
         setDragOffset(0);
         onClose();
       }
@@ -180,6 +184,7 @@ export default function StoryModal({
       return;
     }
 
+    setIsDragging(false);
     setDragOffset(0);
     if (Math.abs(dx) < 30) {
       setTouchStart(null);
@@ -228,7 +233,7 @@ export default function StoryModal({
           maxWidth: '100vw',
           transform: `translateY(${dragOffset}px)`,
           opacity: 1 - Math.min(Math.abs(dragOffset) / 400, 0.5),
-          transition: 'transform 0.3s ease, opacity 0.3s ease',
+          transition: isDragging ? 'none' : 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
         onClick={(e) => e.stopPropagation()}
         onMouseDown={handleMouseDown}

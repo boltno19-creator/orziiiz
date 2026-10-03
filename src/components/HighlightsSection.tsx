@@ -150,8 +150,14 @@ export default function HighlightsSection({ onStoryOpen }: HighlightsSectionProp
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        {/* All screens: 4 circles centered together */}
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-12 py-8 mx-auto animate-luxury-fade-up">
+        {/* Mobile: circles stacked vertically, each full width */}
+        <div className="flex flex-col w-full gap-6 py-4 items-center sm:hidden animate-luxury-fade-up">
+          {storyHighlights.map(renderCircle)}
+          {renderCircle(productHighlight)}
+        </div>
+
+        {/* Desktop: 4 circles centered together in a row */}
+        <div className="hidden sm:flex flex-wrap justify-center items-center gap-8 lg:gap-12 py-8 mx-auto animate-luxury-fade-up">
           {storyHighlights.map(renderCircle)}
           {renderCircle(productHighlight)}
         </div>
