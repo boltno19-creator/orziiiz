@@ -12,7 +12,7 @@ export interface HighlightItem {
 
 const storyHighlights: HighlightItem[] = [
   { id: 'reviews', title: 'آراء', icon: 'reviews', action: 'modal', storyId: 'reviews' },
-  { id: 'info', title: 'أُورزي ١٩٩٨', icon: 'info', action: 'modal', storyId: 'info' },
+  { id: 'info', title: 'معلومات عنا', icon: 'info', action: 'modal', storyId: 'info' },
   { id: 'upcoming', title: 'إصدارات قادمة', icon: 'upcoming', action: 'modal', storyId: 'upcoming' },
 ];
 
