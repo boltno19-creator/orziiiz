@@ -7,7 +7,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/header.jpg')",
+          backgroundImage: "url('/header.gif')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           imageRendering: 'auto',
